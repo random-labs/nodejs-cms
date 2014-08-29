@@ -1,0 +1,30 @@
+extends admin
+
+block content
+	.sub-heading
+		h2 Images
+		input#search(type="text", ng-model='query', placeholder="Search...")
+	.tabs
+		.tab(data-id='#imagesGrid') View Images
+		.tab-file.clear(data-id='#uploadImage') Upload Image
+			input#input-file(type='file')
+
+	#content(ng-controller="ImageListCtrl")
+		
+		#imagesGrid
+			img#loadingGif(src='/img/loading.gif', alt='loading')
+			.image-item(ng-repeat="image in images | filter:query")
+				.thumbnail(style="background-image: url(/img/uploads/{{image}})")
+				p.image-name {{image}}
+
+		#uploadImage
+
+	#imagePopup
+		img#popup-image(src)
+		p File Name: 
+			span#popup-filename
+		p Markdown: 
+			span#popup-markdown
+		#popup-delete.button-green Delete
+
+

@@ -1,0 +1,35 @@
+extends admin
+
+block content
+	.sub-heading
+		h2 Content
+		input#search(type="text", ng-model='query', placeholder="Search...")
+
+	.tabs
+		.tab(data-id='#contentTable') Content
+		.tab-inactive.clear(data-id='#editor') Add New Content
+
+	#content(ng-controller="ContentListCtrl")
+		
+		#contentTable
+			table(cellspacing=0)
+				thead
+					th Content Name
+					th Text
+					th
+				tr(ng-repeat="content in contents | filter:query", data-id='{{content._id}}')
+					td {{content.name}}
+					td {{content.text.substring(0,60)}}
+					td 
+						.button-edit Edit
+						.button-delete Delete
+
+		#editor(data-id='')
+			#editor-inputs
+				h3 Name
+				input#content-name(type="text",)
+
+				h3 Text
+				textarea#content-text
+
+				#content-submit.button-green Save Content

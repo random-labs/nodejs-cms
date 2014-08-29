@@ -1,0 +1,20 @@
+extend layout
+
+block body
+	header
+		#headerText
+			a(href="/", title="home")
+				img(src="/img/logo.png", alt="logo", id="logo")
+			h1.test Dean Coulter
+			h4 Front-end developer and designer
+
+	#container
+		#content
+			#postList
+
+			#about
+				h3 About
+				p #{content.About}
+
+		#post
+

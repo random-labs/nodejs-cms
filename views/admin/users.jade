@@ -1,0 +1,48 @@
+extends admin
+
+block content
+	.sub-heading
+		h2 Users
+		input#search(type="text", ng-model='query', placeholder="Search...")
+	.tabs
+		.tab(data-id='#usersTable') View Current Users
+		.tab-inactive.clear(data-id='#userEditor') Add New User
+
+	#content(ng-controller="UserListCtrl")
+		#usersTable
+			table(cellspacing=0)
+				thead
+					th Username
+					th Email
+					th Permissons
+					th Profile Image
+					th
+
+				tr(ng-repeat="user in users | filter:query", data-id='{{user._id}}')
+					td {{user.username}}
+					td {{user.email}}
+					td {{user.permissions}}
+					td {{user.image}}
+					td
+						.button-edit Edit
+						.button-delete Delete
+
+		#userEditor(data-id='')
+			label(for='user_username') Username:
+			input#user_username(type="text") 
+			<br/>
+			label(for='user_password') Password:
+			input#user_password(type="password")
+			<br/>
+			label(for='user_email') Email:
+			input#user_email(type="email")
+			<br/>
+			label(for='user_permissions') Permissions:
+			select#user_permissions
+				option(value="admin") Admin
+				option(value="default") Default
+			<br/>
+			label(for='user_image') Profile Image:
+			input#user_image(type="text")
+			<br/>
+			#submitUser.button-green Save User

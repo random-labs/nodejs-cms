@@ -1,0 +1,61 @@
+!!! 5
+html(lang="en", ng-app)
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+
+		title Admin - Node cms
+
+		link(rel='stylesheet', href='/css/admin.css')
+		script(src='/js/libs/jquery.js')
+		script(src='/socket.io/socket.io.js')
+		script(src='/js/libs/angular.min.js')
+		script(src='/js/controller.js')
+		script(src='/js/view.js')
+
+	body
+		header
+			h1#logo Node-cms
+
+			#profile
+				#profileName Admin
+				#profileImage
+				a#logout(href='/logout') Logout
+
+		#wrapper
+			section#sidebar
+				#companyLogo
+
+				nav
+					a(href='/admin/users').nav-item
+						.nav-icon.users
+						| Users
+					a(href='/admin/blog').nav-item
+						.nav-icon.blog
+						| Blog Entries
+					a(href='/admin/images').nav-item
+						.nav-icon.images
+						| Images
+					a(href='/admin/content').nav-item
+						.nav-icon.content
+						| Content
+					a(href='/admin/settings').nav-item
+						.nav-icon.settings
+						| Settings
+
+			section#container
+				block content 
+					.sub-heading
+						h2 Home
+						input#search(type="text", placeholder="Search...")
+
+		section#popup
+			.window
+				h3 Heading
+				p Are you sure you want to delete this post forever
+				#window-confirm.button-green Okay
+				#window-cancel.button-green Cancel
+
+
+
+

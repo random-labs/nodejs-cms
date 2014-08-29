@@ -1,0 +1,25 @@
+@mixin transition($value){
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}
+
+@mixin border-radius($value){
+	-webkit-border-radius: $value;
+	border-radius: $value;
+}
+
+@mixin linear-gradient($value){
+	background-image: -webkit-linear-gradient($value);
+	background-image:    -moz-linear-gradient($value);
+	background-image:      -o-linear-gradient($value);
+	background-image:         linear-gradient($value);
+}
+
+@mixin radial-gradient($value){
+	background-image: -webkit-radial-gradient($value);
+	background-image:    -moz-radial-gradient($value);
+	background-image:      -o-radial-gradient($value);
+	background-image:         radial-gradient($value);
+}

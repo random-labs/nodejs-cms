@@ -1,0 +1,19 @@
+{
+	"name": "blog-cms",
+	"subdomain": "deanblog",
+	"version": "0.0.1-10",
+	"private": "true",
+	"scripts": {
+		"start": "node app.js"
+	},
+	"dependencies": {
+		"express": "*",
+		"jade": "*",
+		"socket.io": "*",
+		"mongodb": "*",
+		"mongoose": "*"
+	},
+	"engines": {
+		"node": "0.8.x"
+	}
+}

@@ -1,0 +1,56 @@
+extends admin
+
+block content
+	.sub-heading
+		h2 Blog Entries
+		input#search(type="text", ng-model="query", placeholder="Search...")
+
+	.tabs
+		.tab(data-id='#blogTable') View Current Posts
+		.tab-inactive.clear(data-id='#editor') Create New Entry
+
+	#content(ng-controller="BlogListCtrl")
+
+		#editor(data-id='')
+			#editor-inputs
+				h3 Title
+				input#postHeading(type="text",)
+
+				h3 Content
+				textarea#postContent
+
+			#editor-sidebar
+				h3 Markdown Syntax
+				p
+					| Markdown Syntax: <br/>
+					| Heading: #Heading <br/> 
+					| Image: ![Alt text](/path/to/img.jpg "Optional title") <br/>
+					| Link: [an example](http://example.com/ "Title") <br/>
+					| List: <br/>
+					| - List item 1 <br/>
+					| - List item 2 <br/>
+					| - List item 3 <br/>
+					| Block Quotes: <br/>
+					| > This is a blockquote with two paragraphs. <br/>
+					| > consectetuer adipiscing elit. Aliquam <br/>
+					| > Vestibulum enim wisi, viverra nec, fringilla <br/>
+
+				#insertImage.button-green Insert Image 
+				<br/>
+				#savePost.button-green Save Post
+
+		#blogTable
+			table(cellspacing=0)
+				thead
+					th Title
+					th Date
+					th Content
+					th
+
+				tr(ng-repeat="post in posts | filter:query", data-id='{{post._id}}')
+					td {{post.heading}}
+					td {{post.date.substring(0,10)}}
+					td {{post.body.substring(0,40)}}
+					td 
+						.button-edit Edit
+						.button-delete Delete
